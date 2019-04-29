@@ -1,11 +1,15 @@
 package id.pintro.payment
 
+import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import id.pintro.payment.channel.PaymentChannelFragment
+import id.pintro.payment.data.model.ApiConfig
 import id.pintro.payment.databinding.PaymentActivityBinding
 
 class PaymentActivity : AppCompatActivity() {
@@ -20,14 +24,27 @@ class PaymentActivity : AppCompatActivity() {
         binding.lifecycleOwner = this
         binding.paymentVm = vm
         setSupportActionBar(binding.toolbar)
-        supportActionBar?.title = "Payment Channel"
+        supportActionBar?.title = resources.getString(R.string.payment)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        changeFragment(PaymentChannelFragment.instance(),"channel")
+        intent.hasExtra(KEY_CONFIG).let {
+            if (it) {
+                var config = intent.extras.getParcelable<ApiConfig>(KEY_CONFIG)
+                changeFragment(PaymentChannelFragment.instance(config),"channel")
+            } else {
+                showError("Need config")
+            }
+        }
+
+    }
+
+    private fun showError(msg: String) {
+        Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
     }
 
     fun changeFragment(fragment: Fragment, tag: String) {
         var ft = supportFragmentManager.beginTransaction()
         ft.replace(R.id.container_payment, fragment, tag)
+        ft.addToBackStack(tag)
         ft.isAddToBackStackAllowed
         ft.commit()
 
@@ -49,5 +66,14 @@ class PaymentActivity : AppCompatActivity() {
     override fun onBackPressed() {
         if (supportFragmentManager.backStackEntryCount > 1) super.onBackPressed()
             else finish()
+    }
+    companion object {
+        private const val KEY_CONFIG = "config"
+        fun init(context: Context, config: ApiConfig){
+            val intent = Intent(context, PaymentActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            intent.putExtra(KEY_CONFIG, config)
+            context.startActivity(intent)
+        }
     }
 }

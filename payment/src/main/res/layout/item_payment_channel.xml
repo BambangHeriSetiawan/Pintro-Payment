@@ -1,41 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:bind="http://schemas.android.com/apk/res-auto">
     <data>
         <variable name="paymentChannelVm" type="id.pintro.payment.channel.ItemPaymentChannelVM"/>
     </data>
-    <com.google.android.material.card.MaterialCardView
+    <LinearLayout
+            android:background="@color/white"
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+        <View
+                android:layout_marginTop="@dimen/margin_medium"
+                android:layout_marginBottom="@dimen/margin_medium"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/white_smoke"/>
         <RelativeLayout
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
             <ImageView
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/placeholder"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:layout_marginBottom="@dimen/margin_small"
+                    bind:image_url="@{paymentChannelVm.image}"
                     android:layout_margin="@dimen/margin_medium"
                     android:id="@+id/img_payment_group"
-                    android:layout_width="70dp"
-                    android:layout_height="50dp"/>
+                    android:layout_width="60dp"
+                    android:adjustViewBounds="true"
+                    android:layout_height="30dp"/>
             <TextView
                     android:id="@+id/tv_payment_channel_name"
                     android:layout_centerVertical="true"
-                    android:text="@string/app_name"
+                    android:text="@{paymentChannelVm.title}"
                     android:textSize="18sp"
                     android:layout_toEndOf="@id/img_payment_group"
                     style="@style/AppTheme.Text.Title.Primary"
                     android:drawableEnd="@drawable/ic_arrow_right_primary"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
-            <View
-                    android:layout_marginTop="@dimen/margin_small"
-                    android:layout_marginBottom="@dimen/margin_small"
-                    android:layout_marginStart="@dimen/margin_medium"
-                    android:layout_marginEnd="@dimen/margin_medium"
-                    android:layout_below="@id/img_payment_group"
-                    android:layout_width="match_parent"
-                    android:layout_height="0.5dp"
-                    android:background="@color/white_smoke"/>
 
         </RelativeLayout>
-    </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+
 </layout>

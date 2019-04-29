@@ -1,9 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">payment</string>
     <string name="payment">Payment</string>
-    <string name="choose_payment_method">Payment</string>
+    <string name="choose_payment_method">Choose Payment Method</string>
     <string name="something_wrong">Something wrong</string>
     <string name="try_again">Try Again</string>
     <string name="please_wait">Please wait...</string>
-
 </resources>
