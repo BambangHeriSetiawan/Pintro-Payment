@@ -1,8 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:tools="http://schemas.android.com/tools"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             tools:context=".invoice.PaymentInvoiceFragment">
-
-</FrameLayout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable name="paymentInvoice" type="id.pintro.payment.invoice.PaymentInvoiceVM"/>
+    </data>
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/refresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".invoice.PaymentInvoiceFragment">
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            <WebView
+                    android:id="@+id/wv_payment_invoice"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+            <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_back"
+                    android:layout_margin="@dimen/margin_medium"
+                    android:layout_alignParentBottom="true"
+                    android:layout_width="match_parent"
+                    android:text="@string/back_home"
+                    android:layout_height="wrap_content"/>
+        </RelativeLayout>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+</layout>

@@ -13,6 +13,7 @@ class Pref(var context: Context) {
     private val KEY_TOKEN = "key_token"
     private val KEY_APP_ID = "key_app_id"
     private val KEY_CLINET_ID = "key_client_id"
+    private val KEY_DONATIONS = "key_donations"
 
     init {
         pref = PreferenceManager.getDefaultSharedPreferences(context)
@@ -33,6 +34,12 @@ class Pref(var context: Context) {
     var clientId: Int
         get() =  pref!!.getInt(KEY_CLINET_ID,0)
         set(value) = pref!!.edit().putInt(KEY_CLINET_ID, value).apply()
+
+
+    var isDonations: Boolean
+        get() =  pref!!.getBoolean(KEY_DONATIONS,false)
+        set(value) = pref!!.edit().putBoolean(KEY_DONATIONS, value).apply()
+
 
     fun clear(){
         pref!!.edit().clear()

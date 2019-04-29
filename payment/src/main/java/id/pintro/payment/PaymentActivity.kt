@@ -1,5 +1,6 @@
 package id.pintro.payment
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -45,7 +46,6 @@ class PaymentActivity : AppCompatActivity() {
         var ft = supportFragmentManager.beginTransaction()
         ft.replace(R.id.container_payment, fragment, tag)
         ft.addToBackStack(tag)
-        ft.isAddToBackStackAllowed
         ft.commit()
 
     }
@@ -60,7 +60,8 @@ class PaymentActivity : AppCompatActivity() {
     }
 
     fun back() {
-        onBackPressed()
+        setResult(Activity.RESULT_OK)
+        finish()
     }
 
     override fun onBackPressed() {
@@ -69,11 +70,12 @@ class PaymentActivity : AppCompatActivity() {
     }
     companion object {
         private const val KEY_CONFIG = "config"
-        fun init(context: Context, config: ApiConfig){
+        const val RC_PAYMENT = 111
+        fun init(context: Context, config: ApiConfig): Intent {
             val intent = Intent(context, PaymentActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             intent.putExtra(KEY_CONFIG, config)
-            context.startActivity(intent)
+            return intent
         }
     }
 }

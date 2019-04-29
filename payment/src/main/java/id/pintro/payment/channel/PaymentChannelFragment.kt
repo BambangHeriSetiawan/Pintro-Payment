@@ -31,7 +31,7 @@ class PaymentChannelFragment : Fragment() {
     private lateinit var adapterPaymentGroup: AdapterPaymentGroup
     private val adapterListener: AdapterPaymentChannel.OnAdapterPaymentChannelListener = object : AdapterPaymentChannel.OnAdapterPaymentChannelListener {
         override fun onAdapterPaymentChannelClicked(data: PaymentChannel) {
-            (activity as PaymentActivity).changeFragment(PaymentPreviewFragment.instance(),"preview")
+            (activity as PaymentActivity).changeFragment(PaymentPreviewFragment.instance(config!!),"preview")
         }
     }
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

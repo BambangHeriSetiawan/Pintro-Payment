@@ -6,4 +6,13 @@
     <string name="something_wrong">Something wrong</string>
     <string name="try_again">Try Again</string>
     <string name="please_wait">Please wait...</string>
+    <string name="payment_details">Payment Details</string>
+    <string name="payment_method">Payment Method</string>
+    <string name="sub_total">Sub Total</string>
+    <string name="admin_fee">Admin Fee</string>
+    <string name="total">Total</string>
+    <string name="sample_price">Rp 200.000</string>
+    <string name="sample_payment_method">Virtual Account BCA</string>
+    <string name="back_home">Back to Home</string>
+    <string name="donasi">Donations</string>
 </resources>

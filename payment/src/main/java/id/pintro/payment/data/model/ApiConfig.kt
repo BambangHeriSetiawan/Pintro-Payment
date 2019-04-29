@@ -11,5 +11,6 @@ data class ApiConfig(
     var token:String? = null,
     var url:String? = null,
     var appId:Int? = null,
-    var clientId:Int? = null
+    var clientId:Int? = null,
+    var isDonations:Boolean? = null
 ) : Parcelable
