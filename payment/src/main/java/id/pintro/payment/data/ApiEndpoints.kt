@@ -5,4 +5,5 @@ package id.pintro.payment.data
  */
 object ApiEndpoints {
     const val url_payment_channels = "v1/payment/channel"
+
 }
